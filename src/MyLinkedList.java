@@ -43,8 +43,18 @@ public class MyLinkedList {
 	//       in this list, then returns the data in the node removed.
 	// If the size of this list is zero, throws an Exception.
 	public Object removeFirst() throws Exception {
-		
-		return null; //change this as you need.
+		if (this.size == 0) {
+			throw new Exception("LinkedList is empty!");
+		}
+		Object temp = this.head.next.data;
+		if (this.size == 1) {
+			this.head.next = null;
+		}else {
+			this.head.next = this.head.next.next;
+		}
+		this.size--;
+
+		return temp; //change this as you need.
 	}
 	
 	// Returns true if this list contains the specified element o. 
@@ -110,7 +120,20 @@ public class MyLinkedList {
 	//   Continuing on the previous add() call, add(1,"E") will
 	//   change the existing list to [dummy]->["D"]->["E"]->["A"]->["B"]->["C"].
 	public void add(int index, Object o) {
-		
+		if (index < 0 || index > this.size) {
+			throw new IndexOutOfBoundsException("Index passed in is not valid!");
+		}
+		ListNode cur = this.head;
+		int i = 0;
+		while(i < index) { //walks up the linked list until it reaches the index
+			cur = cur.next;
+			i ++;
+		}
+		ListNode nn = new ListNode(o);
+		nn.next = cur.next; //points nn at the node which is currently at the index
+		cur.next = nn; //points the node left of the index at nnr
+		this.size ++;
+
 	}
 	
 

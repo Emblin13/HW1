@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42470056-eae7-47dc-90fb-21af1cd1a8d7" name="Changes" comment=".">
+    <list default="true" id="42470056-eae7-47dc-90fb-21af1cd1a8d7" name="Changes" comment="Finished code (but not cleaned up)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyLinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyLinkedListTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyLinkedListTester.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +60,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664241734485</updated>
-      <workItem from="1664241736013" duration="19272000" />
+      <workItem from="1664241736013" duration="20178000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <created>1664313817102</created>
@@ -71,7 +69,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664313817102</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Finished code (but not cleaned up)">
+      <created>1664330266538</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1664330266538</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,6 +96,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="Finished code (but not cleaned up)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished code (but not cleaned up)" />
   </component>
 </project>

@@ -1,5 +1,3 @@
-import java.util.NoSuchElementException;
-
 public class MyLinkedList {
 	
 	private ListNode head;
@@ -46,7 +44,7 @@ public class MyLinkedList {
 		if (this.size == 0) {
 			throw new Exception("LinkedList is empty!");
 		}
-		Object temp = this.head.next.data;
+		Object temp = this.head.next.data; //stores data from the first node
 		if (this.size == 1) {
 			this.head.next = null;
 		}else {
@@ -62,8 +60,20 @@ public class MyLinkedList {
 	// such that (o==null ? e==null : o.equals(e)).
 	// Note: you have to handle the case where a list node stores null data element.
 	public boolean contains(Object o) {
-		
-		return false; //change this as you need.
+		ListNode prev = this.head, cur = this.head.next;
+		int i = 0;
+		while(i < size) {
+			if(cur.data == null && o == null) { //Safely checks data without causing a NullPointerException
+				return true;
+			}
+			if(cur.data.equals(o)) {
+				return true;
+			}
+			prev = cur;
+			cur = cur.next;
+			i++;
+		}
+		return false; //Linked list does not contain data equal to Object o
 	}
 	
 	// Removes the first occurrence of the specified element o from this list and returns true, if it is present. 
@@ -72,8 +82,38 @@ public class MyLinkedList {
 	//     (o==null ? get(i)==null : o.equals(get(i))) (if such an element exists).
 	// Note: you have to handle the case where a list node stores null data element.
 	public boolean remove(Object o) {
-		
-		return false; //change this as you need.
+//		for(ListNode prev = this.head, cur = this.head.next;
+//			cur != null; prev = cur, cur = cur.next) { //Walks prev and cur through entire linked list
+//			if(cur.data == null && o == null) { //Safely removes null data without causing a NullPointerException
+//				prev.next = cur.next;
+//				this.size--;
+//				return true;
+//			}
+//			if(cur.data.equals(o)) {
+//				prev.next = cur.next;
+//				this.size--;
+//				return true;
+//			}
+//		}
+		ListNode prev = this.head, cur = this.head.next;
+		int i = 0;
+		while(i < size) {
+			if(cur.data == null && o == null) { //Safely removes null data without causing a NullPointerException
+				prev.next = cur.next;
+				this.size--;
+				return true;
+			}
+			if(cur.data.equals(o)) {
+				prev.next = cur.next;
+				this.size--;
+				return true;
+			}
+			prev = cur;
+			cur = cur.next;
+			i++;
+		}
+
+		return false; //no data was removed
 	}
 
 	// Removes all copies of o from this linked list.
@@ -86,9 +126,12 @@ public class MyLinkedList {
 	//        E.g. []->["A"]->["A"]->["B"]. 
 	//        Be careful when removing all "A"s in this example.
 	// Note: This list may contains zero, one or multiple copies of null data elements.
-	public boolean removeAllCopies( Object o ) { //passed test
-		
-		return false; //change this as you need.
+	public boolean removeAllCopies(Object o) { //passed test
+		boolean dataWasRemoved = this.remove(o);
+		while(this.remove(o)){
+			//empty body
+		}
+		return dataWasRemoved;
 	}
 	
 	// Insert data elements from linkedlist A and B alternately into 
@@ -106,8 +149,22 @@ public class MyLinkedList {
 	//       C will be {1, 2, 3, 4, 5, 6, 8, 10}.
 	// Note: after this method is called, both list A and B are UNCHANGED.
 	public static MyLinkedList interleave(MyLinkedList A, MyLinkedList B) {
-		
-		return null; //change this as you need.
+		MyLinkedList C = new MyLinkedList();
+		ListNode curA = A.head.next, curB = B.head.next;
+
+		while(curA != null || curB != null) { //While loops continues until both A and B have been fully walked through
+			//Checks if list A still has a new element to add. If it does, it adds that element to C,
+			//then walks list A forwards.
+			if(curA != null) {
+				C.add(curA.data);
+				curA = curA.next;
+			}
+			if(curB != null) {
+				C.add(curB.data);
+				curB = curB.next;
+			}
+		}
+		return C; //change this as you need.
 	}
 	
 	// Inserts the specified element at the specified position in this list. 
@@ -120,7 +177,7 @@ public class MyLinkedList {
 	//   Continuing on the previous add() call, add(1,"E") will
 	//   change the existing list to [dummy]->["D"]->["E"]->["A"]->["B"]->["C"].
 	public void add(int index, Object o) {
-		if (index < 0 || index > this.size) {
+		if(index < 0 || index > this.size) {
 			throw new IndexOutOfBoundsException("Index passed in is not valid!");
 		}
 		ListNode cur = this.head;
@@ -131,7 +188,7 @@ public class MyLinkedList {
 		}
 		ListNode nn = new ListNode(o);
 		nn.next = cur.next; //points nn at the node which is currently at the index
-		cur.next = nn; //points the node left of the index at nnr
+		cur.next = nn; //points the node left of the index at nn
 		this.size ++;
 
 	}
@@ -142,7 +199,18 @@ public class MyLinkedList {
 	//      the last list node has index of size()-1.
 	// if index < 0 or index >= this.size, throws IndexOutOfBoundsException.
 	public Object get(int index) throws IndexOutOfBoundsException{
-		return null; //change this as you need.
+		if(index < 0 || index >= this.size) {
+			throw new IndexOutOfBoundsException("Provided index is out of bounds!");
+		}
+		ListNode cur = this.head;
+
+		int i = 0;
+		while(i < index + 1) { //walks up the linked list until it reaches the index
+			//Why does < index + 1 work, but not < index?
+			cur = cur.next;
+			i ++;
+		}
+		return cur.data; //change this as you need.
 	}
 	
 	// Removes (cuts out) the list node at the specified index in this list. 
@@ -151,15 +219,54 @@ public class MyLinkedList {
 	//      the last list node has index of size()-1.
 	// if index < 0 or index >= this.size, throws IndexOutOfBoundsException.
 	public Object remove(int index) throws IndexOutOfBoundsException {
-		
-		return null; //change this as you need.
+		if(index < 0 || index >= this.size) {
+			throw new IndexOutOfBoundsException("Provided index is out of bounds!");
+		}
+		ListNode prev = this.head, cur = this.head.next;
+
+		int i = 0;
+		while(i < index) { //walks up the linked list until it reaches the index
+			prev = cur;
+			cur = cur.next;
+			i ++;
+		}
+
+		Object dataRemoved = cur.data; //Stores the value of the current node that will be removed
+		prev.next = cur.next;
+		//cur = cur.next; //Is this line necessary for some reason?
+		this.size--;
+
+		return dataRemoved; //change this as you need.
 	}
 
 	
 	//Add the object e to the end of this list.
 	// it returns true, after e is successfully added.
 	public boolean add(Object e) {
-		
+		ListNode prev = this.head, cur = this.head.next;
+		ListNode nn = new ListNode(e);
+
+		if(size == 0) { //If the list is empty, adds this way to avoid NullPointerException
+			prev.next = nn;
+			this.size++;
+			return true;
+		}
+		int i = 0;
+		while(i < size - 1) {
+//			prev = cur;
+			cur = cur.next;
+			i++;
+		}
+
+//		for (int i = 0; i < size - 1; i++) { //Walks to the very end of the linked list
+//			//Is this better or worse than doing it with a while loop?
+//			//Why do I need size - 1 rather than size?
+//			//prev = cur;
+//			cur = cur.next;
+//		}
+		cur.next = nn;
+		this.size++;
+
 		return true; //change this as you need.
 	}
 	

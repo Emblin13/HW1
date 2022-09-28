@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42470056-eae7-47dc-90fb-21af1cd1a8d7" name="Changes" comment="">
+    <list default="true" id="42470056-eae7-47dc-90fb-21af1cd1a8d7" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyLinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyLinkedListTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyLinkedListTester.java" afterDir="false" />
@@ -62,8 +62,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664241734485</updated>
-      <workItem from="1664241736013" duration="7970000" />
+      <workItem from="1664241736013" duration="19272000" />
     </task>
+    <task id="LOCAL-00001" summary=".">
+      <created>1664313817102</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1664313817102</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -82,5 +90,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>

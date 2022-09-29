@@ -82,19 +82,6 @@ public class MyLinkedList {
 	//     (o==null ? get(i)==null : o.equals(get(i))) (if such an element exists).
 	// Note: you have to handle the case where a list node stores null data element.
 	public boolean remove(Object o) {
-//		for(ListNode prev = this.head, cur = this.head.next;
-//			cur != null; prev = cur, cur = cur.next) { //Walks prev and cur through entire linked list
-//			if(cur.data == null && o == null) { //Safely removes null data without causing a NullPointerException
-//				prev.next = cur.next;
-//				this.size--;
-//				return true;
-//			}
-//			if(cur.data.equals(o)) {
-//				prev.next = cur.next;
-//				this.size--;
-//				return true;
-//			}
-//		}
 		ListNode prev = this.head, cur = this.head.next;
 		int i = 0;
 		while(i < size) {
@@ -108,6 +95,7 @@ public class MyLinkedList {
 				this.size--;
 				return true;
 			}
+
 			prev = cur;
 			cur = cur.next;
 			i++;
@@ -184,31 +172,25 @@ public class MyLinkedList {
 		int i = 0;
 		while(i < index) { //walks up the linked list until it reaches the index
 			cur = cur.next;
-			i ++;
+			i++;
 		}
 		ListNode nn = new ListNode(o);
 		nn.next = cur.next; //points nn at the node which is currently at the index
 		cur.next = nn; //points the node left of the index at nn
-		this.size ++;
+		this.size++;
 
 	}
-	
-
-	// Returns the element at the specified index in this list.
-	// Be noted that the listnode at head.next has index 0 and 
-	//      the last list node has index of size()-1.
-	// if index < 0 or index >= this.size, throws IndexOutOfBoundsException.
 	public Object get(int index) throws IndexOutOfBoundsException{
 		if(index < 0 || index >= this.size) {
 			throw new IndexOutOfBoundsException("Provided index is out of bounds!");
 		}
-		ListNode cur = this.head;
+		ListNode cur = this.head.next;
 
 		int i = 0;
-		while(i < index + 1) { //walks up the linked list until it reaches the index
+		while(i < index) { //walks up the linked list until it reaches the index
 			//Why does < index + 1 work, but not < index?
 			cur = cur.next;
-			i ++;
+			i++;
 		}
 		return cur.data; //change this as you need.
 	}

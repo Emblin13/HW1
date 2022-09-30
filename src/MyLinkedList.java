@@ -52,7 +52,7 @@ public class MyLinkedList {
 		}
 		this.size--;
 
-		return temp; //change this as you need.
+		return temp;
 	}
 	
 	// Returns true if this list contains the specified element o.
@@ -146,7 +146,6 @@ public class MyLinkedList {
 		this.size ++;
 
 	}
-	
 
 	// Returns the element at the specified index in this list.
 	public Object get(int index) throws IndexOutOfBoundsException{

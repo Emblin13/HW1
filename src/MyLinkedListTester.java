@@ -211,14 +211,14 @@ public class MyLinkedListTester {
                 // the method you are currently debugging.  
                 // When submitting your code, please uncomment all methods below.
 
-//		testAddLast(); //
-//		testRemoveFirst(); //
-//		testContains(); //
-//		testRemoveObject();//
-//		testRemoveAllCopies();//
-//		testInterleave(); //
-//		testAddIndex(); //
-//		testRemoveIndex(); //
+		testAddLast(); //
+		testRemoveFirst(); //
+		testContains(); //
+		testRemoveObject();//
+		testRemoveAllCopies();//
+		testInterleave(); //
+		testAddIndex(); //
+		testRemoveIndex(); //
 		testGetIndex(); //
 	}//end of main
 }
